@@ -112,10 +112,6 @@ defmodule ABI.TypeEncoder do
       "0000000000000000000000000000000000000000000000000000000000000000"
   """
   @spec encode(list(), ABI.FunctionSelector.t()) :: binary()
-  def encode(data, %ABI.FunctionSelector{function: nil} = function_selector) do
-    encode_raw(data, function_selector.types)
-  end
-
   def encode(data, function_selector) do
     encode_method_id(function_selector) <> encode_head_and_data(data, function_selector.types)
   end
